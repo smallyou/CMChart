@@ -218,6 +218,7 @@ static BOOL    _isAnimation = YES;      //默认支持动画
     //更新数据源
     _avaibleWidth = self.bounds.size.width - _margin - _margin;
     _avaibleHeight = self.bounds.size.height - _margin - _marginHeight - _margin - _marginSepartor - _margin - _marginHeight - _marginSepartor;
+    _barWidth = _avaibleWidth / xLabels.count - 2 ;
     
     //更新
     [self cm_updateXLabels];
@@ -231,6 +232,11 @@ static BOOL    _isAnimation = YES;      //默认支持动画
     //更新数据源
     _avaibleWidth = self.bounds.size.width - _margin - _margin;
     _avaibleHeight = self.bounds.size.height - _margin - _marginHeight - _margin - _marginSepartor - _margin - _marginHeight - _marginSepartor ;
+    
+    _barWidth = _avaibleWidth / yValues.count - 2 ;
+    if (_barWidth > 20) {
+        _barWidth = 20;
+    }
 
     //更新表格
     [self cm_updateYBars];
