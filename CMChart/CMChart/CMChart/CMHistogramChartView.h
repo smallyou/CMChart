@@ -11,11 +11,11 @@
 @interface CMHistogramChartView : UIView
 
 #pragma mark - API
-/**配置字体和颜色（主题、副标题、副副标题）*/
-- (void)configFontWithColor;
-
 /**设置标题*/
 - (void)setMainTitle:(NSString *)mainTitle  secondTitle:(NSString *)secondTitle thirdTitle:(NSString *)thirdTitle;
+
+/**设置标题及其属性*/
+- (void)setMainTitle:(NSString *)mainTitle mainTitleAttribute:(NSDictionary *)mainAttribute secondTitle:(NSString *)secondTitle secondTitleAttribute:(NSDictionary *)secondAttribute thirdTitle:(NSString *)thirdTitle thirdTitleAttribute:(NSDictionary *)thirdAttribute;
 
 /**设置x轴标签*/
 - (void)updateXLabels:(NSArray *)xLabels;

@@ -147,13 +147,23 @@ static BOOL    _isAnimation = YES;      //默认支持动画
 /**设置标题*/
 - (void)setMainTitle:(NSString *)mainTitle secondTitle:(NSString *)secondTitle thirdTitle:(NSString *)thirdTitle
 {
+    [self setMainTitle:mainTitle mainTitleAttribute:nil secondTitle:secondTitle secondTitleAttribute:nil thirdTitle:thirdTitle thirdTitleAttribute:nil];
+}
 
+/**设置标题及其属性*/
+- (void)setMainTitle:(NSString *)mainTitle mainTitleAttribute:(NSDictionary *)mainAttribute secondTitle:(NSString *)secondTitle secondTitleAttribute:(NSDictionary *)secondAttribute thirdTitle:(NSString *)thirdTitle thirdTitleAttribute:(NSDictionary *)thirdAttribute
+{
     if (mainTitle.length) {
         
         UILabel *mainTitleLabel = [[UILabel alloc]init];
-        mainTitleLabel.font = _mainTitleFont;
-        mainTitleLabel.textColor = _mainTitleColor;
-        mainTitleLabel.text = mainTitle;
+        if (mainAttribute) {
+            mainTitleLabel.attributedText = [[NSAttributedString alloc]initWithString:mainTitle attributes:mainAttribute];
+        }else{
+            mainTitleLabel.font = _mainTitleFont;
+            mainTitleLabel.textColor = _mainTitleColor;
+            mainTitleLabel.text = mainTitle;
+        }
+
         [self addSubview:mainTitleLabel];
         self.mainTitleLabel = mainTitleLabel;
         
@@ -162,9 +172,13 @@ static BOOL    _isAnimation = YES;      //默认支持动画
     if (secondTitle.length) {
         
         UILabel *secondTitleLabel = [[UILabel alloc]init];
-        secondTitleLabel.font = _secondTitleFont;
-        secondTitleLabel.textColor = _secondTitleColor;
-        secondTitleLabel.text = secondTitle;
+        if (secondAttribute) {
+            secondTitleLabel.attributedText = [[NSAttributedString alloc]initWithString:secondTitle attributes:secondAttribute];
+        }else{
+            secondTitleLabel.font = _secondTitleFont;
+            secondTitleLabel.textColor = _secondTitleColor;
+            secondTitleLabel.text = secondTitle;
+        }
         [self addSubview:secondTitleLabel];
         self.secondTitleLabel = secondTitleLabel;
         
@@ -173,7 +187,14 @@ static BOOL    _isAnimation = YES;      //默认支持动画
     if (thirdTitle.length) {
         
         UILabel *thirdTitleLabel = [[UILabel alloc]init];
-        thirdTitleLabel.text = thirdTitle;
+        if (thirdAttribute) {
+            thirdTitleLabel.attributedText = [[NSAttributedString alloc]initWithString:thirdTitle attributes:thirdAttribute];
+        }else{
+            thirdTitleLabel.font = _thirdTitleFont;
+            thirdTitleLabel.textColor = _secondTitleColor;
+            thirdTitleLabel.text = thirdTitle;
+        }
+        
         [self addSubview:thirdTitleLabel];
         self.thirdTitleLabel = thirdTitleLabel;
     }
@@ -185,8 +206,7 @@ static BOOL    _isAnimation = YES;      //默认支持动画
         [self addSubview:titleSepartorView];
         self.titleSepartorView = titleSepartorView;
     }
-    
-    
+
 }
 
 
