@@ -272,7 +272,7 @@ static BOOL    _isAnimation = YES;      //默认支持动画
 /**更新y轴数值*/
 - (void)cm_updateYBars
 {
-    CGFloat margin = ( _avaibleWidth - 20 - 20 * _xLabels.count) / (_xLabels.count - 1);
+    CGFloat margin = ( _avaibleWidth - 20 - 20 * _yValues.count) / (_yValues.count - 1);
     
     //移除
     for (CALayer *layer in self.barsArray) {
