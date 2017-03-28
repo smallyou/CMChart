@@ -11,7 +11,7 @@
 
 #import "CMChartItem.h"
 #import "CMHistogramChartView.h"
-
+#import "CMLineChartView.h"
 
 
 #endif /* CMChart_h */

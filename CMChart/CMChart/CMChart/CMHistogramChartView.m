@@ -120,7 +120,7 @@ static BOOL    _isAnimation = YES;      //默认支持动画
     
     if (self.secondTitleLabel) {
         CGSize size = [self.secondTitleLabel.text sizeWithAttributes:@{NSFontAttributeName:_secondTitleFont}];
-        CGFloat width = size.width > 100?100:(size.width + _margin);
+        CGFloat width = size.width > 150?150:(size.width + _margin);
         self.secondTitleLabel.frame = CGRectMake(CGRectGetMaxX(self.mainTitleLabel.frame), _margin, width, _marginHeight);
     }
     
@@ -277,13 +277,6 @@ static BOOL    _isAnimation = YES;      //默认支持动画
     //移除
     for (CALayer *layer in self.barsArray) {
         
-        if (_isAnimation) {
-            CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-            animation.fromValue = @1;
-            animation.toValue = @0;
-            animation.duration = 0.5;
-            [layer addAnimation:animation forKey:@""];
-        }
         
         [layer removeFromSuperlayer];
     }
